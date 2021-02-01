@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You can run this project locally with Docker or with the compatible Rubi version
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Docker
+Just run `docker-compose up --build` and the environment will build and start.
 
-* System dependencies
+### Local build
+Build you local project with `bundle install` then run the server with `rails server -b 0.0.0.0`.
 
-* Configuration
+## API Endpoints
+- base_url: `https://bx-poketrade-back.herokuapp.com`
 
-* Database creation
+#### 1. **Show History Trades**
+- Description: `returns the trades history ordered by creation date from newest to oldest`
+- Resource: `/pokemontrade`
+- Method: `GET`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### 2. **Store New Trade**
+- Description: `stores the new pokemon trade`
+- Resource: `/pokemontrade`
+- Method: `POST`
+- Body:
+```json
+{
+	"pokemontrade": {
+		"trainer01": "String",
+		"trainer02": "String",
+		"pokemon_list01": [
+			{
+				"api_id": 1,
+				"name": "bulbasaur",
+				"base_experience": 64,
+				"sprite_url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+			}
+		],
+		"pokemon_list02": []
+	}
+}
+```
